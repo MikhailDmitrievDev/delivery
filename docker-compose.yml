@@ -6,17 +6,17 @@ services:
       dockerfile: /order_food/dockerfiles/Dockerfile
     ports:
       - "8000:8000"
-#    depends_on:
-#      - postgres
+    depends_on:
+      - postgres_db
 
-#  postgres:
-#    image: postgres
-#    ports:
-#      - "54321:5432"
-#    env_file:
-#      - order_food/.env
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data
-#
-#volumes:
-#  postgres_data:
+  postgres_db:
+    image: postgres
+    ports:
+      - "54321:5432"
+    env_file:
+      - order_food/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
